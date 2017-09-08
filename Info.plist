@@ -28,6 +28,11 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>TpldKhangXiDictTrial.otf</string>
+		<string>Wyue-GutiFangsong-NC_deliverable.otf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
