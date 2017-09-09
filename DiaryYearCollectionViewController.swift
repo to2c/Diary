@@ -1,28 +1,32 @@
 //
-//  HomeCollectionViewController.swift
+//  DiaryYearCollectionViewController.swift
 //  Diary
 //
-//  Created by CC on 2017/9/9.
+//  Created by CC on 2017/9/10.
 //  Copyright © 2017年 To2C DesignStudio. All rights reserved.
 //
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "DiaryYearCollectionViewController"
 
-class HomeCollectionViewController: UICollectionViewController {
+class DiaryYearCollectionViewController: UICollectionViewController {
+    var year: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let layout = DiaryLayout()
+        
+        layout.scrollDirection = UICollectionViewScrollDirection.horizontal
+        self.collectionView?.setCollectionViewLayout(layout, animated: false)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        let yearLayout = DiaryLayout()
-        yearLayout.scrollDirection = UICollectionViewScrollDirection.horizontal
-        self.collectionView?.setCollectionViewLayout(yearLayout, animated: false)
+        // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+
         // Do any additional setup after loading the view.
     }
 
@@ -55,27 +59,16 @@ class HomeCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let identifier = "HomeYearCollectionViewCell"
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! HomeYearCollectionViewCell
-        
-        cell.textInt = 2017
-        
-        cell.labelText = "二零一七 年"
+        let identifier = "DiaryCell"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! DiaryCell
+        cell.textInt = 1
+        cell.labelText = "一月"
     
         // Configure the cell
     
         return cell
     }
 
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let identifier = "DiaryYearCollectionViewController"
-        let dvc = self.storyboard?.instantiateViewController(withIdentifier: identifier) as! DiaryYearCollectionViewController
-        dvc.year = 2017
-        
-        self.navigationController!.pushViewController(dvc, animated: true)
-    }
     // MARK: UICollectionViewDelegate
 
     /*
