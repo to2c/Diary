@@ -20,7 +20,11 @@ class HomeYearCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.textLabel = DiaryLabel(fontname: "TpldKhangXiDictTrial", labelText: labelText, fontSize: 16.0, lineHeight: 5.0)
+        self.textLabel = DiaryLabel(
+            fontname: "TpldKhangXiDictTrial",
+            labelText: labelText, 
+            fontSize: 16.0, lineHeight: 5.0,
+            color: UIColor.black)
         self.contentView.addSubview(textLabel)
     }
     

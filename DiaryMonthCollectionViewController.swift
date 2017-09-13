@@ -8,25 +8,60 @@
 
 import UIKit
 
+let DiaryRed = UIColor.init(red: 192.0/255.0, green: 23.0/255.0, blue: 48.0/255.0, alpha: 1.0)
 // private let reuseIdentifier = "Cell"
 
 class DiaryMonthCollectionViewController: UICollectionViewController {
     var month: Int!
+    var yearLabel: DiaryLabel!
+    var monthLabel: DiaryLabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let layout = DiaryLayout()
+        
         layout.scrollDirection = UICollectionViewScrollDirection.horizontal
         self.collectionView?.setCollectionViewLayout(layout, animated: false)
+        
+        yearLabel = DiaryLabel(
+            fontname: "TpldKhangXiDictTrial",
+            labelText: "二零一七年",
+            fontSize: 16.0,
+            lineHeight: 5.0,
+            color: UIColor.black)
+        
+        yearLabel.frame = CGRect(x: screenSize.width - yearLabel.frame.size.width - 20,
+                                 y: 20,
+                                 width: yearLabel.frame.size.width,
+                                 height: yearLabel.frame.size.height)
+        
+        self.view.addSubview(yearLabel)
+        
+        monthLabel = DiaryLabel(fontname: "Wyue-GutiFangsong-NC",
+                                labelText: "三月",
+                                fontSize: 16.0,
+                                lineHeight: 5.0,
+                                color: DiaryRed)
+        
+        monthLabel.frame = CGRect(x: screenSize.width - monthLabel.frame.size.width - 20,
+                                  y: screenSize.height/2.0 - monthLabel.frame.size.height/2.0,
+                                  width: monthLabel.frame.size.width,
+                                  height: monthLabel.frame.size.height)
+        
+        self.view.addSubview(monthLabel)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        let composeButton =  diaryButtonWith(text: "撰",
+                                             fontSize: 14.0,
+                                             width: 40.0,
+                                             normalImageName: "Oval",
+                                             highlightedImageName: "Oval_pressed")
+        composeButton.center = CGPoint(x: yearLabel.center.x, y: 38 + yearLabel.frame.size.height + 26.0/2.0)
+        self.view.addSubview(composeButton)
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -63,7 +98,7 @@ class DiaryMonthCollectionViewController: UICollectionViewController {
         let identifier = "DiaryCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! DiaryCell
         cell.textInt = 1
-        cell.labelText = "一月"
+        cell.labelText = "季风气候"
     
         return cell
     }

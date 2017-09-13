@@ -13,6 +13,7 @@ private let reuseIdentifier = "Cell"
 class HomeCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
+        self.navigationController!.delegate = self
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -108,3 +109,12 @@ class HomeCollectionViewController: UICollectionViewController {
     */
 
 }
+
+extension HomeCollectionViewController: UINavigationControllerDelegate{
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = DiaryAnimator()
+        animator.operation = operation
+        return animator
+    }
+}
+

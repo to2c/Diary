@@ -71,6 +71,13 @@ class DiaryYearCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let identifier = "DiaryMonthCollectionViewController"
+        let dvc = self.storyboard?.instantiateViewController(withIdentifier: identifier) as! DiaryMonthCollectionViewController
+        dvc.month = 1
+        self.navigationController!.pushViewController(dvc, animated: true)
+        
+    }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

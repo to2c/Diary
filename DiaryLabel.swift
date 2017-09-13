@@ -30,7 +30,8 @@ class DiaryLabel: UILabel {
     convenience init(fontname: String,
                      labelText: String,
                      fontSize: CGFloat,
-                     lineHeight: CGFloat){
+                     lineHeight: CGFloat,
+                     color: UIColor){
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
         let font = UIFont(name: fontname, size: fontSize) as UIFont!
@@ -40,6 +41,7 @@ class DiaryLabel: UILabel {
         paragraphStyle.lineSpacing = lineHeight
         
         textAttributes = [NSFontAttributeName: font!,
+                          NSForegroundColorAttributeName: color,
                           NSParagraphStyleAttributeName: paragraphStyle]
         
         let labelSize = sizeHeightWithText(labelText: labelText, fontSize: fontSize, textAttributes: textAttributes)
