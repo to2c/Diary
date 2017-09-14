@@ -58,6 +58,7 @@ class DiaryMonthCollectionViewController: UICollectionViewController {
                                              normalImageName: "Oval",
                                              highlightedImageName: "Oval_pressed")
         composeButton.center = CGPoint(x: yearLabel.center.x, y: 38 + yearLabel.frame.size.height + 26.0/2.0)
+        composeButton.addTarget(self, action: #selector(newCompose), for: UIControlEvents.touchUpInside)
         self.view.addSubview(composeButton)
     }
     
@@ -101,6 +102,12 @@ class DiaryMonthCollectionViewController: UICollectionViewController {
         cell.labelText = "季风气候"
     
         return cell
+    }
+    
+    func newCompose() {
+        let identifier = "DiaryComposeViewController"
+        let composeViewController = self.storyboard?.instantiateInitialViewController(withIdentifier: identifier) as! DiaryComposeViewController
+        self.present(composeViewController, animated: true, completion: nil)
     }
 
     // MARK: UICollectionViewDelegate
